@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.silang.svgpractice.MainActivity">
+
+        <!--使用app:srcCompat代替android:src为了兼容性-->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/ic_directions_bike_black_24dp" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/mAppCompatImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp" />
+
+        <!--使用vectordrawable设置background (包括TextView的CompoundDrawable)
+        不管是使用xml还是Java，都要求View是AppCompatView,而且vectorDrawable不能直接使用
+        必须依附于StateListDrawable,InsetDrawable,LayerDrawable,LevelListDrawable,RotateDrawable
+        这里选择selector再包一层使用，另外设置  AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+       -->
+
+        <!--以下2种写法会导致APP崩溃，提示找不到资源-->
+        <!--<ImageView-->
+        <!--android:background="@drawable/ic_directions_bike_black_24dp"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:drawableLeft="@drawable/ic_directions_bike_black_24dp"-->
+        <!--android:text="测试" />-->
+
+
+        <!--AppCompatView直接使用VectorDrawable设置background会报错-->
+        <!--<android.support.v7.widget.AppCompatImageView-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:background="@drawable/ic_directions_bike_black_24dp" />-->
+
+        <!--VectorDrawable外面再包一层Selector在使用-->
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/test" />
+
+        <!--AppCompatView直接使用VectorDrawable设置compound drawable会报错-->
+        <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:drawableLeft="@drawable/ic_directions_bike_black_24dp"-->
+        <!--android:text="测试"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp" />-->
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:drawableLeft="@drawable/test"
+            android:text="测试" />
+
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/bg_AppCompatImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp" />
+
+
+    </LinearLayout>
+</HorizontalScrollView>
